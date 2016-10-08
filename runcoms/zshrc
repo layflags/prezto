@@ -24,9 +24,6 @@ alias zupdate="cd ~/.zprezto && git pull && git submodule update --init --recurs
 # set PATH
 export PATH="/usr/local/share/npm/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/Developer/usr/bin:/usr/bin:$PATH"
 
-# set default language
-export LANG=en_US.UTF-8
-
 # use vim as default editor
 set -o vi
 export EDITOR='vim'
