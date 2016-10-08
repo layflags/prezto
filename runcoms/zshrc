@@ -21,14 +21,6 @@ alias zreload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 alias zshrc="vim ~/.zshrc && zreload"
 alias zupdate="cd ~/.zprezto && git pull && git submodule update --init --recursive && cd -"
 
-# set PATH
-export PATH="/usr/local/share/npm/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/Developer/usr/bin:/usr/bin:$PATH"
-
-# use vim as default editor
-set -o vi
-export EDITOR='vim'
-export VISUAL='vim'
-
 # use vi mode (zle)
 bindkey -v
 
@@ -43,19 +35,22 @@ bindkey '^r' history-incremental-search-backward
 # kill the lag when switching to vi command mode (zle)
 export KEYTIMEOUT=1
 
+# add NPM to PATH
+export PATH="/usr/local/share/npm/bin:$PATH"
+
 # add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.rvm/bin"
+
+# add Postgres scripts to PATH
+export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
 
 # JAVA home
 export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
 
-# tab completion for npm
-. <(npm completion)
-
-# nvm setup
+# load NVM
 export NVM_DIR="/Users/martin/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# add Postgres scripts to PATH
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
+# tab completion for npm
+. <(npm completion)
 
