@@ -10,4 +10,55 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+# ~~~ Customized ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# my special aliases
+alias rmtilde="find . -name '*~'|xargs rm -rf"
+alias tmuxks='tmux kill-session -t '
+alias vimrc="vim ~/.vimrc"
+alias serve="python -m SimpleHTTPServer"
+alias zreload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
+alias zshrc="vim ~/.zshrc && zreload"
+alias zupdate="cd ~/.zprezto && git pull && git submodule update --init --recursive && cd -"
+
+# set PATH
+export PATH="/usr/local/share/npm/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/Developer/usr/bin:/usr/bin:$PATH"
+
+# set default language
+export LANG=en_US.UTF-8
+
+# use vim as default editor
+set -o vi
+export EDITOR='vim'
+export VISUAL='vim'
+
+# use vi mode (zle)
+bindkey -v
+
+# use common shell key bindings (zle)
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
+# kill the lag when switching to vi command mode (zle)
+export KEYTIMEOUT=1
+
+# add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# JAVA home
+export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
+
+# tab completion for npm
+. <(npm completion)
+
+# nvm setup
+export NVM_DIR="/Users/martin/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# add Postgres scripts to PATH
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
+
